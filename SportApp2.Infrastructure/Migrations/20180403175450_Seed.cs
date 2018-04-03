@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SportApp2.Migrations
+namespace SportApp2.Infrastructure.Migrations
 {
     public partial class Seed : Migration
     {

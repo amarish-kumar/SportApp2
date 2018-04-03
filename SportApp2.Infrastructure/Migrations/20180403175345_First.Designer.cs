@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.Internal;
 using SportApp2.Infrastructure.DbContext;
 using System;
 
-namespace SportApp2.Migrations
+namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180403145607_Seed")]
-    partial class Seed
+    [Migration("20180403175345_First")]
+    partial class First
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,7 +180,7 @@ namespace SportApp2.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SportApp2.Domain.Exercise", b =>
+            modelBuilder.Entity("SportApp2.Core.Domain.Exercise", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
@@ -198,7 +198,7 @@ namespace SportApp2.Migrations
                     b.ToTable("Exercises");
                 });
 
-            modelBuilder.Entity("SportApp2.Domain.Food", b =>
+            modelBuilder.Entity("SportApp2.Core.Domain.Food", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
