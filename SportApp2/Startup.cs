@@ -5,7 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using SportApp2.Core.Repositories;
 using SportApp2.Infrastructure.DbContext;
+using SportApp2.Infrastructure.Mappers;
+using SportApp2.Infrastructure.Repositories;
 using SportApp2.Infrastructure.Services;
 
 namespace SportApp2
@@ -26,8 +29,9 @@ namespace SportApp2
             services.AddMemoryCache();
             var dbConnectionString = @"Data Source=.;Initial Catalog=SportApp2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
-
+            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<IFoodRepository, FoodRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace SportApp2.Controllers
 {
     [Route("api/[controller]")]
-    public class SampleDataController : Controller
+    public class SampleDataController : ApiControllerBase
     {
         private static string[] Summaries = new[]
         {
