@@ -8,7 +8,6 @@ namespace SportApp2.Core.Repositories
 {
     public interface IFoodRepository
     {
-        Task<IEnumerable<Food>> GetAllAsync();
         Task<Food> GetAsync(Guid id);
         Task<Food> GetAsync(string name);
         Task<IEnumerable<Food>> BrowseAsync(string name = "");

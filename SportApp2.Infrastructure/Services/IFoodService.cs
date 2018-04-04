@@ -8,7 +8,6 @@ namespace SportApp2.Infrastructure.Services
 {
     public interface IFoodService
     {
-        Task<IEnumerable<FoodDto>> GetAllAsync();
         Task<FoodDto> GetAsync(Guid id);
         Task<FoodDto> GetAsync(string name);
         Task<IEnumerable<FoodDto>> BrowseAsync(string name = null);

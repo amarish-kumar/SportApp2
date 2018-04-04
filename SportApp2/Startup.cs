@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -29,9 +30,9 @@ namespace SportApp2
             services.AddMemoryCache();
             var dbConnectionString = @"Data Source=.;Initial Catalog=SportApp2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
-            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddScoped<IFoodService, FoodService>();
             services.AddScoped<IFoodRepository, FoodRepository>();
+            services.AddSingleton<IMapper>(AutoMapperConfig.Initialize());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

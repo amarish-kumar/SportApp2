@@ -18,9 +18,6 @@ namespace SportApp2.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Food>> GetAllAsync()
-            => await Task.FromResult(_dbContext.Foods.ToList());
-
         public async Task<Food> GetAsync(Guid id)
             => await Task.FromResult(_dbContext.Foods.SingleOrDefault(x => x.Id == id));
 

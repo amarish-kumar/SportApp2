@@ -10,6 +10,7 @@ using SportApp2.Infrastructure.Services;
 
 namespace SportApp2.Controllers
 {
+    [Route("[controller]")]
     public class FoodController : ApiControllerBase
     {
         private readonly IFoodService _foodService;
@@ -22,28 +23,22 @@ namespace SportApp2.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string name)
         {
-            return Json(_foodService.GetAllAsync());
+            var foods = _cache.Get<IEnumerable<FoodDto>>("foods");
+            if (foods == null)
+            {
+                Console.WriteLine("Fetching from service");
+                foods = await _foodService.BrowseAsync(name);
+                _cache.Set("events", foods, TimeSpan.FromMinutes(1));
+            }
+            else
+            {
+                Console.WriteLine("Fetching from cache");
+            }
+
+            return Json(foods);
         }
-
-        //[HttpGet]
-        //public async Task<IActionResult> Get(string name)
-        //{
-        //    var foods = _cache.Get<IEnumerable<FoodDto>>("foods");
-        //    if(foods == null)
-        //    {
-        //        Console.WriteLine("Fetching from service");
-        //        foods = await _foodService.BrowseAsync(name);
-        //        _cache.Set("events", foods, TimeSpan.FromMinutes(1));
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Fetching from cache");
-        //    }
-
-        //    return Json(foods);
-        //}
 
         [HttpGet("{foodId}")]
         public async Task<IActionResult> Get(Guid foodId)

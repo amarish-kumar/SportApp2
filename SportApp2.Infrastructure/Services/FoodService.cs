@@ -14,16 +14,10 @@ namespace SportApp2.Infrastructure.Services
         private readonly IMapper _mapper;
         private readonly IFoodRepository _foodRepository;
 
-        public FoodService(Mapper mapper, IFoodRepository foodRepository)
+        public FoodService(IMapper mapper, IFoodRepository foodRepository)
         {
             _mapper = mapper;
             _foodRepository = foodRepository;
-        }
-
-        public async Task<IEnumerable<FoodDto>> GetAllAsync()
-        {
-            var @food = await _foodRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<FoodDto>>(@food);
         }
 
         public async Task<FoodDto> GetAsync(Guid id)
