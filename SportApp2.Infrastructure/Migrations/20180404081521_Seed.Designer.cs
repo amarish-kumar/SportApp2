@@ -11,8 +11,8 @@ using System;
 namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180403175345_First")]
-    partial class First
+    [Migration("20180404081521_Seed")]
+    partial class Seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,6 +212,35 @@ namespace SportApp2.Infrastructure.Migrations
                     b.ToTable("Foods");
                 });
 
+            modelBuilder.Entity("SportApp2.Core.Domain.Nutrient", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<float>("Calories");
+
+                    b.Property<float>("Carbohydrate");
+
+                    b.Property<float>("Cholesterol");
+
+                    b.Property<float>("FatSaturated");
+
+                    b.Property<float>("FatTrans");
+
+                    b.Property<Guid>("FoodId");
+
+                    b.Property<float>("Proteins");
+
+                    b.Property<float>("Sodium");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FoodId")
+                        .IsUnique();
+
+                    b.ToTable("Nutrients");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -254,6 +283,14 @@ namespace SportApp2.Infrastructure.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SportApp2.Core.Domain.Nutrient", b =>
+                {
+                    b.HasOne("SportApp2.Core.Domain.Food", "Food")
+                        .WithOne("Nutrient")
+                        .HasForeignKey("SportApp2.Core.Domain.Nutrient", "FoodId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

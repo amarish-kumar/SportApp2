@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SportApp2.Infrastructure.Migrations
 {
-    public partial class First : Migration
+    public partial class Seed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -182,6 +182,31 @@ namespace SportApp2.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Nutrients",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Calories = table.Column<float>(nullable: false),
+                    Carbohydrate = table.Column<float>(nullable: false),
+                    Cholesterol = table.Column<float>(nullable: false),
+                    FatSaturated = table.Column<float>(nullable: false),
+                    FatTrans = table.Column<float>(nullable: false),
+                    FoodId = table.Column<Guid>(nullable: false),
+                    Proteins = table.Column<float>(nullable: false),
+                    Sodium = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Nutrients", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Nutrients_Foods_FoodId",
+                        column: x => x.FoodId,
+                        principalTable: "Foods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -220,6 +245,12 @@ namespace SportApp2.Infrastructure.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Nutrients_FoodId",
+                table: "Nutrients",
+                column: "FoodId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -243,13 +274,16 @@ namespace SportApp2.Infrastructure.Migrations
                 name: "Exercises");
 
             migrationBuilder.DropTable(
-                name: "Foods");
+                name: "Nutrients");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Foods");
         }
     }
 }
