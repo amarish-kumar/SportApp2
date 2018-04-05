@@ -9,7 +9,7 @@ namespace SportApp2.Infrastructure.DbContext
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
         public DbSet<Food> Foods { get; set; }
-        public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<FoodType> FoodTypes { get; set; }
         public DbSet<Nutrient> Nutrients { get; set; }
     }
 }

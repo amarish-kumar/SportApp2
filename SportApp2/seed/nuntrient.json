@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "319bb834-7dab-4914-9dd9-a877772da9cf",
+    "Calories": 23,
+    "Carbohydrate": 34,
+    "Cholesterol": 56,
+    "FatSaturated": 67,
+    "FatTrans": 77,
+    "Proteins": 90,
+    "Sodium": 78
+  },
+  {
+    "Id": "0493238f-1c39-45f5-90e9-9f48b55f3276",
+    "Calories": 23,
+    "Carbohydrate": 34,
+    "Cholesterol": 56,
+    "FatSaturated": 67,
+    "FatTrans": 77,
+    "Proteins": 90,
+    "Sodium": 78
+  },
+  {
+    "Id": "0d5652bf-1586-472a-8672-1d3e08584ba7",
+    "Calories": 23,
+    "Carbohydrate": 34,
+    "Cholesterol": 56,
+    "FatSaturated": 67,
+    "FatTrans": 77,
+    "Proteins": 90,
+    "Sodium": 78
+  }
+]  
+
+

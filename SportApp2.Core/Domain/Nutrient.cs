@@ -1,12 +1,12 @@
 ﻿using SportApp2.Core.Domain.Base;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SportApp2.Core.Domain
 {
     public class Nutrient : Entity
     {
-        public Guid FoodId { get; set; }
-        public const int UnitWeightGram = 100;
+        public int UnitWeightGram { get; }  = 100;
         public float Calories { get; protected set; }
         public float FatSaturated { get; protected set; }
         public float FatTrans { get; protected set; }
@@ -16,5 +16,22 @@ namespace SportApp2.Core.Domain
         public float Proteins { get; protected set; }
 
         public virtual Food Food { get; set; }
+
+        public Nutrient()
+        {
+        }
+
+        public Nutrient(float calories, int fatSaturated, int fatTrans, int cholesterol,
+            int sodium, int carbohydrate, int proteins)
+        {
+            Id = Guid.NewGuid();
+            Calories = calories;
+            FatSaturated = fatSaturated;
+            FatTrans = fatTrans;
+            Cholesterol = cholesterol;
+            Sodium = sodium;
+            Carbohydrate = carbohydrate;
+            Proteins = proteins;
+        }
     }
 }

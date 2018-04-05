@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using SportApp2.Core.Repositories;
 using SportApp2.Infrastructure.DbContext;
+using SportApp2.Infrastructure.Extensions;
 using SportApp2.Infrastructure.Mappers;
 using SportApp2.Infrastructure.Repositories;
 using SportApp2.Infrastructure.Services;
@@ -41,8 +42,12 @@ namespace SportApp2
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 DatabaseContext dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
-                dbContext.Database.Migrate();
-                dbContext.Database.EnsureCreated();
+
+                if (!serviceScope.ServiceProvider.GetService<DatabaseContext>().AllMigrationsApplied())
+                {
+                    serviceScope.ServiceProvider.GetService<DatabaseContext>().Database.Migrate();
+                    serviceScope.ServiceProvider.GetService<DatabaseContext>().EnsureSeeded();
+                }
             }
 
             if (env.IsDevelopment())
