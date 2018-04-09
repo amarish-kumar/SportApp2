@@ -19,5 +19,16 @@ namespace SportApp2.Infrastructure.Extensions
 
             return @food;
         }
+
+        public static async Task<FoodType> GetFoodTypeOrFailAsync(this IFoodTypeRepository repository, Guid id)
+        {
+            var @food = await repository.GetAsync(id);
+            if (@food == null)
+            {
+                throw new Exception($"Food type with id: '{id}' does not exist.");
+            }
+
+            return @food;
+        }
     }
 }

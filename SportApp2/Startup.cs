@@ -17,10 +17,7 @@ namespace SportApp2
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -39,16 +36,16 @@ namespace SportApp2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                DatabaseContext dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+            //using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    DatabaseContext dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
 
-                if (!serviceScope.ServiceProvider.GetService<DatabaseContext>().AllMigrationsApplied())
-                {
-                    serviceScope.ServiceProvider.GetService<DatabaseContext>().Database.Migrate();
-                    serviceScope.ServiceProvider.GetService<DatabaseContext>().EnsureSeeded();
-                }
-            }
+            //    if (!serviceScope.ServiceProvider.GetService<DatabaseContext>().AllMigrationsApplied())
+            //    {
+            //        serviceScope.ServiceProvider.GetService<DatabaseContext>().Database.Migrate();
+            //        serviceScope.ServiceProvider.GetService<DatabaseContext>().EnsureSeeded();
+            //    }
+            //}
 
             if (env.IsDevelopment())
             {

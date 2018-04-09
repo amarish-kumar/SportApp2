@@ -18,7 +18,6 @@ namespace SportApp2.Core.Domain
 
         public FoodType(string name, string description)
         {
-            Id = Guid.NewGuid();
             Name = name;
             Description = description;
         }
