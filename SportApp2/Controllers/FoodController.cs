@@ -10,7 +10,7 @@ using SportApp2.Infrastructure.Services;
 
 namespace SportApp2.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/food")]
     public class FoodController : ApiControllerBase
     {
         private readonly IFoodService _foodService;
