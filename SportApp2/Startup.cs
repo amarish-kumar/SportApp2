@@ -29,7 +29,9 @@ namespace SportApp2
             var dbConnectionString = @"Data Source=.;Initial Catalog=SportApp2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(dbConnectionString));
             services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<IFoodTypeService, FoodTypeService>();
             services.AddScoped<IFoodRepository, FoodRepository>();
+            services.AddScoped<IFoodTypeRepository, FoodTypeRepository>();
             services.AddSingleton<IMapper>(AutoMapperConfig.Initialize());
         }
 

@@ -10,7 +10,7 @@ namespace SportApp2.Infrastructure.Mappers
             => new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Food, FoodDto>();
-                //    .ForMember(x => x.AvailableTicketsCount, m => m.MapFrom(p => p.AvailableTickets.Count()))
+                //    .ForMember(x => x.FoodTypeName, m => m.MapFrom(p => p.AvailableTickets.Count()))
                 //    .ForMember(x => x.PurchasedTicketsCount, m => m.MapFrom(p => p.PurchasedTickets.Count()))
                 //    .ForMember(x => x.TicketsCount, m => m.MapFrom(p => p.Tickets.Count()));
             })

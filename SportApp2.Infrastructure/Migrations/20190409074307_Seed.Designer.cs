@@ -11,8 +11,8 @@ using System;
 namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180409074202_Intial")]
-    partial class Intial
+    [Migration("20190409074307_Seed")]
+    partial class Seed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

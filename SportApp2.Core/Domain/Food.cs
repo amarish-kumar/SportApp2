@@ -7,11 +7,13 @@ namespace SportApp2.Core.Domain
     {
         public string Name { get; protected set; }
         public string Description { get; protected set; }
-
+        public Guid FoodTypeId { get; set; }
+        public virtual FoodType FoodType { get; set; }
         public virtual Nutrient Nutrient { get; set; }
 
         public Food()
         {
+
         }
 
         public Food(string name, string description)

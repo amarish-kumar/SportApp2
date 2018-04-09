@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace SportApp2.Infrastructure.DTO
 {
     public class FoodDto

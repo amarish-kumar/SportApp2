@@ -186,7 +186,7 @@ namespace SportApp2.Infrastructure.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<Guid?>("FoodTypeId");
+                    b.Property<Guid>("FoodTypeId");
 
                     b.Property<string>("Name");
 
@@ -288,9 +288,10 @@ namespace SportApp2.Infrastructure.Migrations
 
             modelBuilder.Entity("SportApp2.Core.Domain.Food", b =>
                 {
-                    b.HasOne("SportApp2.Core.Domain.FoodType")
+                    b.HasOne("SportApp2.Core.Domain.FoodType", "FoodType")
                         .WithMany("Foods")
-                        .HasForeignKey("FoodTypeId");
+                        .HasForeignKey("FoodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SportApp2.Core.Domain.Nutrient", "Nutrient")
                         .WithOne("Food")

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SportApp2.Infrastructure.Services
 {
-    class FoodTypeService : IFoodTypeService
+    public class FoodTypeService : IFoodTypeService
     {
         private readonly IMapper _mapper;
         private readonly IFoodTypeRepository _foodTypeRepository;

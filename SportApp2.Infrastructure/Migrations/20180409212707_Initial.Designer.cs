@@ -11,8 +11,8 @@ using System;
 namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20180409074307_Seed")]
-    partial class Seed
+    [Migration("20180409212707_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,7 +187,7 @@ namespace SportApp2.Infrastructure.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<Guid?>("FoodTypeId");
+                    b.Property<Guid>("FoodTypeId");
 
                     b.Property<string>("Name");
 
@@ -289,9 +289,10 @@ namespace SportApp2.Infrastructure.Migrations
 
             modelBuilder.Entity("SportApp2.Core.Domain.Food", b =>
                 {
-                    b.HasOne("SportApp2.Core.Domain.FoodType")
+                    b.HasOne("SportApp2.Core.Domain.FoodType", "FoodType")
                         .WithMany("Foods")
-                        .HasForeignKey("FoodTypeId");
+                        .HasForeignKey("FoodTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SportApp2.Core.Domain.Nutrient", "Nutrient")
                         .WithOne("Food")

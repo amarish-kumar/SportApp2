@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using SportApp2.Core.Domain;
 using SportApp2.Core.Repositories;
+using SportApp2.Infrastructure.DbContext;
 using SportApp2.Infrastructure.DTO;
 using SportApp2.Infrastructure.Extensions;
 
@@ -13,17 +15,23 @@ namespace SportApp2.Infrastructure.Services
     {
         private readonly IMapper _mapper;
         private readonly IFoodRepository _foodRepository;
+        private readonly IFoodTypeRepository _foodTypeRepository;
+        private readonly DatabaseContext _db;
 
-        public FoodService(IMapper mapper, IFoodRepository foodRepository)
+        public FoodService(IMapper mapper, IFoodRepository foodRepository, IFoodTypeRepository foodTypeRepository)
         {
             _mapper = mapper;
             _foodRepository = foodRepository;
+            _foodTypeRepository = foodTypeRepository;
         }
 
         public async Task<FoodDto> GetAsync(Guid id)
         {
             var @food = await _foodRepository.GetAsync(id);
-            return _mapper.Map<FoodDto>(@food);
+            var foodDto = _mapper.Map<FoodDto>(@food);
+            var foodType = await Task.FromResult(_foodTypeRepository.GetAsync(@food.FoodTypeId));
+            foodDto.FoodTypeName = foodType.Result.Name;
+            return foodDto;
         }
 
         public async Task<FoodDto> GetAsync(string name)

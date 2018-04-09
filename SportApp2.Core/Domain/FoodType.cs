@@ -6,14 +6,13 @@ namespace SportApp2.Core.Domain
 {
     public class FoodType : Entity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        public ICollection<Food> Foods { get; set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public virtual ICollection<Food> Foods { get; private set; }
 
         public FoodType()
         {
-
+            this.Foods = new HashSet<Food>();
         }
 
         public FoodType(string name, string description)

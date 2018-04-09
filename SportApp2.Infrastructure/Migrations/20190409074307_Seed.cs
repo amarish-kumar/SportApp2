@@ -21,7 +21,6 @@ namespace SportApp2.Infrastructure.Migrations
             migrationBuilder.Sql($"INSERT INTO Foods (Id, Name, Description, FoodTypeId) VALUES ('{FoodId2}', 'Egg', 'Proteins', '{FoodTypeId1}')");
             var FoodId3 = Guid.NewGuid();
             migrationBuilder.Sql($"INSERT INTO Foods (Id, Name, Description, FoodTypeId) VALUES ('{FoodId3}', 'Apple', 'Fruit', '{FoodTypeId3}')");
-
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

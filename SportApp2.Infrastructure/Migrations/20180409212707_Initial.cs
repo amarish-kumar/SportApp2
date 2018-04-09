@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SportApp2.Infrastructure.Migrations
 {
-    public partial class Intial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -191,7 +191,7 @@ namespace SportApp2.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    FoodTypeId = table.Column<Guid>(nullable: true),
+                    FoodTypeId = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     NutrientId = table.Column<Guid>(nullable: true)
                 },
@@ -203,7 +203,7 @@ namespace SportApp2.Infrastructure.Migrations
                         column: x => x.FoodTypeId,
                         principalTable: "FoodTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Foods_Nutrients_NutrientId",
                         column: x => x.NutrientId,
