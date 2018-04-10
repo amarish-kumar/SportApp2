@@ -38,11 +38,15 @@
     <None Remove="ClientApp\app\components\converter\converter.component.ts" />
     <None Remove="ClientApp\app\components\counter\counter.component.spec.ts" />
     <None Remove="ClientApp\app\components\counter\counter.component.ts" />
-    <None Remove="ClientApp\app\components\foodList\foodList.component.ts" />
+    <None Remove="ClientApp\app\components\foods\foods.component.ts" />
+    <None Remove="ClientApp\app\components\foods\services\foods.service.ts" />
     <None Remove="ClientApp\app\components\home\home.component.ts" />
     <None Remove="ClientApp\app\components\navmenu\navmenu.component.ts" />
     <None Remove="ClientApp\boot.browser.ts" />
     <None Remove="ClientApp\boot.server.ts" />
+    <None Remove="ClientApp\models\food.ts" />
+    <None Remove="ClientApp\services\foods-backend.service.ts" />
+    <None Remove="ClientApp\services\http-foods-backend.ts" />
     <None Remove="ClientApp\test\boot-tests.ts" />
   </ItemGroup>
 
@@ -55,11 +59,15 @@
     <TypeScriptCompile Include="ClientApp\app\components\converter\converter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\counter\counter.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\counter\counter.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\foodList\foodList.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\foods\foods.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\foods\services\foods.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\home\home.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\navmenu\navmenu.component.ts" />
     <TypeScriptCompile Include="ClientApp\boot.browser.ts" />
     <TypeScriptCompile Include="ClientApp\boot.server.ts" />
+    <TypeScriptCompile Include="ClientApp\models\food.ts" />
+    <TypeScriptCompile Include="ClientApp\services\foods-backend.service.ts" />
+    <TypeScriptCompile Include="ClientApp\services\http-foods-backend.ts" />
     <TypeScriptCompile Include="ClientApp\test\boot-tests.ts" />
   </ItemGroup>
 

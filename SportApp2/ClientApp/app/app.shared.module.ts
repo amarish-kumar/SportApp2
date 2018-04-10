@@ -9,9 +9,19 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 
-import { FoodListComponent } from './components/foodList/foodList.component';
 import { ConverterComponent } from './components/converter/converter.component';
 import { CallendarComponent } from './components/callendar/callendar.component';
+
+// Foods section
+import { FoodsComponent } from './components/foods/foods.component';
+import { FoodsService } from './components/foods/services/foods.service';
+import { FoodsBackendService } from '../services/foods-backend.service';
+import { HttpFoodsBackendService } from '../services/http-foods-backend';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
     declarations: [
@@ -19,22 +29,29 @@ import { CallendarComponent } from './components/callendar/callendar.component';
         NavMenuComponent,
         CounterComponent,
         HomeComponent,
-        FoodListComponent,
         ConverterComponent,
-        CallendarComponent
+        CallendarComponent,
+        FoodsComponent
     ],
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        CalendarModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'foodlist', component: FoodListComponent },
+            { path: 'foods', component: FoodsComponent },
             { path: 'converter', component: ConverterComponent },
             { path: 'callendar', component: CallendarComponent },
             { path: '**', redirectTo: 'home' }
         ])
+    ],
+    providers: [
+        FoodsService,
+        { provide: FoodsBackendService, useClass: HttpFoodsBackendService }
     ]
 })
 export class AppModuleShared {

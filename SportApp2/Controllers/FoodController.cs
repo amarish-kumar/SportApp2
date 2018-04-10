@@ -10,8 +10,9 @@ using SportApp2.Infrastructure.Services;
 
 namespace SportApp2.Controllers
 {
+    [Produces("application/json")]
     [Route("api/food")]
-    public class FoodController : ApiControllerBase
+    public class FoodController : Controller
     {
         private readonly IFoodService _foodService;
         private readonly IMemoryCache _cache;
@@ -22,14 +23,14 @@ namespace SportApp2.Controllers
             _cache = cache;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(string name)
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetFoods()
         {
             var foods = _cache.Get<IEnumerable<FoodDto>>("foods");
             if (foods == null)
             {
                 Console.WriteLine("Fetching from service");
-                foods = await _foodService.BrowseAsync(name);
+                foods = await _foodService.BrowseAsync(null);
                 _cache.Set("events", foods, TimeSpan.FromMinutes(1));
             }
             else
@@ -40,8 +41,8 @@ namespace SportApp2.Controllers
             return Json(foods);
         }
 
-        [HttpGet("{foodId}")]
-        public async Task<IActionResult> Get(Guid foodId)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> GetFood(Guid foodId)
         {
             var @food = await _foodService.GetAsync(foodId);
             if(@food == null)
@@ -67,7 +68,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction(nameof(Get));
+                return RedirectToAction(nameof(GetFoods));
             }
             catch
             {
@@ -90,7 +91,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction(nameof(Get));
+                return RedirectToAction(nameof(GetFoods));
             }
             catch
             {
@@ -113,7 +114,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(Get));
+                return RedirectToAction(nameof(GetFoods));
             }
             catch
             {
