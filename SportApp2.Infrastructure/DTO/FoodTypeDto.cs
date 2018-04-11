@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SportApp2.Infrastructure.DTO
 {
-    public class FoodTypesDto
+    public class FoodTypeDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

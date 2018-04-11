@@ -9,6 +9,7 @@ namespace SportApp2.Core.Domain
         public string Name { get; private set; }
         public string Description { get; private set; }
         public virtual ICollection<Food> Foods { get; private set; }
+        public virtual ICollection<ProductImage> ProductImages { get; set; }
 
         public FoodType()
         {

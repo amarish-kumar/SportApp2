@@ -21,22 +21,22 @@ namespace SportApp2.Infrastructure.Services
             _foodTypeRepository = foodTypeRepository;
         }
 
-        public async Task<FoodTypesDto> GetAsync(Guid id)
+        public async Task<FoodTypeDto> GetAsync(Guid id)
         {
             var @food = await _foodTypeRepository.GetAsync(id);
-            return _mapper.Map<FoodTypesDto>(@food);
+            return _mapper.Map<FoodTypeDto>(@food);
         }
 
-        public async Task<FoodTypesDto> GetAsync(string name)
+        public async Task<FoodTypeDto> GetAsync(string name)
         {
             var @food = await _foodTypeRepository.GetAsync(name);
-            return _mapper.Map<FoodTypesDto>(@food);
+            return _mapper.Map<FoodTypeDto>(@food);
         }
 
-        public async Task<IEnumerable<FoodTypesDto>> BrowseAsync(string name = null)
+        public async Task<IEnumerable<FoodTypeDto>> BrowseAsync(string name = null)
         {
             var foods = await _foodTypeRepository.BrowseAsync(name);
-            return _mapper.Map<IEnumerable<FoodTypesDto>>(foods);
+            return _mapper.Map<IEnumerable<FoodTypeDto>>(foods);
         }
 
         public async Task CreateAsync(string name, string description)

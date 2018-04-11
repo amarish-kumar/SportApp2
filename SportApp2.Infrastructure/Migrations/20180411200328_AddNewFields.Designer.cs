@@ -11,9 +11,10 @@ using System;
 namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180411200328_AddNewFields")]
+    partial class AddNewFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,6 +193,8 @@ namespace SportApp2.Infrastructure.Migrations
 
                     b.Property<Guid?>("NutrientId");
 
+                    b.Property<Guid?>("ProductImageId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("FoodTypeId");
@@ -199,6 +202,10 @@ namespace SportApp2.Infrastructure.Migrations
                     b.HasIndex("NutrientId")
                         .IsUnique()
                         .HasFilter("[NutrientId] IS NOT NULL");
+
+                    b.HasIndex("ProductImageId")
+                        .IsUnique()
+                        .HasFilter("[ProductImageId] IS NOT NULL");
 
                     b.ToTable("Foods");
                 });
@@ -212,7 +219,13 @@ namespace SportApp2.Infrastructure.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<Guid?>("ProductImageId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductImageId")
+                        .IsUnique()
+                        .HasFilter("[ProductImageId] IS NOT NULL");
 
                     b.ToTable("FoodTypes");
                 });
@@ -246,17 +259,9 @@ namespace SportApp2.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("FoodId");
-
-                    b.Property<Guid?>("FoodTypeId");
-
                     b.Property<byte[]>("Image");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FoodId");
-
-                    b.HasIndex("FoodTypeId");
 
                     b.ToTable("ProductImages");
                 });
@@ -316,17 +321,17 @@ namespace SportApp2.Infrastructure.Migrations
                     b.HasOne("SportApp2.Core.Domain.Nutrient", "Nutrient")
                         .WithOne("Food")
                         .HasForeignKey("SportApp2.Core.Domain.Food", "NutrientId");
+
+                    b.HasOne("SportApp2.Core.Domain.ProductImage", "ProductImage")
+                        .WithOne("Food")
+                        .HasForeignKey("SportApp2.Core.Domain.Food", "ProductImageId");
                 });
 
-            modelBuilder.Entity("SportApp2.Core.Domain.ProductImage", b =>
+            modelBuilder.Entity("SportApp2.Core.Domain.FoodType", b =>
                 {
-                    b.HasOne("SportApp2.Core.Domain.Food", "Food")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("FoodId");
-
-                    b.HasOne("SportApp2.Core.Domain.FoodType", "FoodType")
-                        .WithMany("ProductImages")
-                        .HasForeignKey("FoodTypeId");
+                    b.HasOne("SportApp2.Core.Domain.ProductImage", "ProductImage")
+                        .WithOne("FoodType")
+                        .HasForeignKey("SportApp2.Core.Domain.FoodType", "ProductImageId");
                 });
 #pragma warning restore 612, 618
         }

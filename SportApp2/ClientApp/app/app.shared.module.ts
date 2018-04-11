@@ -21,6 +21,7 @@ import { HttpFoodsBackendService } from '../services/http-foods-backend';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { UploadImageCompoment } from '../helpers/upload-image.component';
 import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
@@ -31,6 +32,7 @@ import { CalendarModule } from 'primeng/calendar';
         HomeComponent,
         ConverterComponent,
         CallendarComponent,
+        UploadImageCompoment,
         FoodsComponent
     ],
     imports: [

@@ -1,5 +1,6 @@
 ﻿using SportApp2.Core.Domain.Base;
 using System;
+using System.Collections.Generic;
 
 namespace SportApp2.Core.Domain
 {
@@ -10,6 +11,7 @@ namespace SportApp2.Core.Domain
         public Guid FoodTypeId { get; set; }
         public virtual FoodType FoodType { get; set; }
         public virtual Nutrient Nutrient { get; set; }
+        public virtual ICollection<ProductImage> ProductImages { get; private set; }
 
         public Food()
         {

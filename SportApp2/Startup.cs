@@ -32,6 +32,7 @@ namespace SportApp2
             services.AddScoped<IFoodTypeService, FoodTypeService>();
             services.AddScoped<IFoodRepository, FoodRepository>();
             services.AddScoped<IFoodTypeRepository, FoodTypeRepository>();
+            services.AddScoped<IImageService, ImageService>();
             services.AddSingleton<IMapper>(AutoMapperConfig.Initialize());
         }
 

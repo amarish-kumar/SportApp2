@@ -8,9 +8,9 @@ namespace SportApp2.Infrastructure.Services
 {
     public interface IFoodTypeService
     {
-        Task<FoodTypesDto> GetAsync(Guid id);
-        Task<FoodTypesDto> GetAsync(string name);
-        Task<IEnumerable<FoodTypesDto>> BrowseAsync(string name = null);
+        Task<FoodTypeDto> GetAsync(Guid id);
+        Task<FoodTypeDto> GetAsync(string name);
+        Task<IEnumerable<FoodTypeDto>> BrowseAsync(string name = null);
         Task CreateAsync(string name, string description);
         Task UpdateAsync(Guid id, string name, string description);
         Task DeleteAsync(Guid id);

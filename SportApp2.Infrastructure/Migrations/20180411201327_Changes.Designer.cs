@@ -11,9 +11,10 @@ using System;
 namespace SportApp2.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20180411201327_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,17 +247,17 @@ namespace SportApp2.Infrastructure.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("FoodId");
+                    b.Property<Guid?>("FoodTypesId");
 
-                    b.Property<Guid?>("FoodTypeId");
+                    b.Property<Guid?>("FoodsId");
 
                     b.Property<byte[]>("Image");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FoodId");
+                    b.HasIndex("FoodTypesId");
 
-                    b.HasIndex("FoodTypeId");
+                    b.HasIndex("FoodsId");
 
                     b.ToTable("ProductImages");
                 });
@@ -320,13 +321,13 @@ namespace SportApp2.Infrastructure.Migrations
 
             modelBuilder.Entity("SportApp2.Core.Domain.ProductImage", b =>
                 {
-                    b.HasOne("SportApp2.Core.Domain.Food", "Food")
+                    b.HasOne("SportApp2.Core.Domain.FoodType", "FoodTypes")
                         .WithMany("ProductImages")
-                        .HasForeignKey("FoodId");
+                        .HasForeignKey("FoodTypesId");
 
-                    b.HasOne("SportApp2.Core.Domain.FoodType", "FoodType")
+                    b.HasOne("SportApp2.Core.Domain.Food", "Foods")
                         .WithMany("ProductImages")
-                        .HasForeignKey("FoodTypeId");
+                        .HasForeignKey("FoodsId");
                 });
 #pragma warning restore 612, 618
         }

@@ -45,6 +45,8 @@
     <None Remove="ClientApp\app\components\navmenu\navmenu.component.ts" />
     <None Remove="ClientApp\boot.browser.ts" />
     <None Remove="ClientApp\boot.server.ts" />
+    <None Remove="ClientApp\helpers\upload-image.component.ts" />
+    <None Remove="ClientApp\models\food Type.ts" />
     <None Remove="ClientApp\models\food.ts" />
     <None Remove="ClientApp\services\foods-backend.service.ts" />
     <None Remove="ClientApp\services\http-foods-backend.ts" />
@@ -67,6 +69,8 @@
     <TypeScriptCompile Include="ClientApp\app\components\navmenu\navmenu.component.ts" />
     <TypeScriptCompile Include="ClientApp\boot.browser.ts" />
     <TypeScriptCompile Include="ClientApp\boot.server.ts" />
+    <TypeScriptCompile Include="ClientApp\helpers\upload-image.component.ts" />
+    <TypeScriptCompile Include="ClientApp\models\food Type.ts" />
     <TypeScriptCompile Include="ClientApp\models\food.ts" />
     <TypeScriptCompile Include="ClientApp\services\foods-backend.service.ts" />
     <TypeScriptCompile Include="ClientApp\services\http-foods-backend.ts" />

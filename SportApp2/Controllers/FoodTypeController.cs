@@ -12,40 +12,40 @@ namespace SportApp2.Controllers
 {
     [Produces("application/json")]
     [Route("api/food")]
-    public class FoodController : Controller
+    public class FoodTypeController : Controller
     {
-        private readonly IFoodService _foodService;
+        private readonly IFoodTypeService _foodTypeService;
         private readonly IMemoryCache _cache;
 
-        public FoodController(IFoodService foodService, IMemoryCache cache)
+        public FoodTypeController(IFoodTypeService foodTypeService, IMemoryCache cache)
         {
-            _foodService = foodService;
+            _foodTypeService = foodTypeService;
             _cache = cache;
         }
 
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetFoods()
+        public async Task<IActionResult> GetFoodTypes()
         {
-            var foods = _cache.Get<IEnumerable<FoodDto>>("foods");
-            if (foods == null)
+            var foodTypes = _cache.Get<IEnumerable<FoodTypeDto>>("foodTypes");
+            if (foodTypes == null)
             {
                 Console.WriteLine("Fetching from service");
-                foods = await _foodService.BrowseAsync(null);
-                _cache.Set("foods", foods, TimeSpan.FromMinutes(1));
+                foodTypes = await _foodTypeService.BrowseAsync(null);
+                _cache.Set("foodTypes", foodTypes, TimeSpan.FromMinutes(1));
             }
             else
             {
                 Console.WriteLine("Fetching from cache");
             }
 
-            return Json(foods);
+            return Json(foodTypes);
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> GetFood(Guid foodId)
+        public async Task<IActionResult> GetFoodType(Guid foodTypeId)
         {
-            var @food = await _foodService.GetAsync(foodId);
-            if(@food == null)
+            var @food = await _foodTypeService.GetAsync(foodTypeId);
+            if (@food == null)
             {
                 return NotFound();
             }
@@ -68,7 +68,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction(nameof(GetFoods));
+                return RedirectToAction(nameof(GetFoodTypes));
             }
             catch
             {
@@ -91,7 +91,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction(nameof(GetFoods));
+                return RedirectToAction(nameof(GetFoodTypes));
             }
             catch
             {
@@ -114,7 +114,7 @@ namespace SportApp2.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(GetFoods));
+                return RedirectToAction(nameof(GetFoodTypes));
             }
             catch
             {
