@@ -38,6 +38,7 @@
     <None Remove="ClientApp\app\components\converter\converter.component.ts" />
     <None Remove="ClientApp\app\components\counter\counter.component.spec.ts" />
     <None Remove="ClientApp\app\components\counter\counter.component.ts" />
+    <None Remove="ClientApp\app\components\foods\food-details.component.ts" />
     <None Remove="ClientApp\app\components\foods\foods.component.ts" />
     <None Remove="ClientApp\app\components\foods\services\foods.service.ts" />
     <None Remove="ClientApp\app\components\home\home.component.ts" />
@@ -59,6 +60,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\converter\converter.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\counter\counter.component.spec.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\counter\counter.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\foods\food-details.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\foods\foods.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\foods\services\foods.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\home\home.component.ts" />

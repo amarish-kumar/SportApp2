@@ -42,6 +42,7 @@ namespace SportApp2.Infrastructure.Services
 
         public async Task<IEnumerable<FoodDto>> BrowseAsync(string name = null)
         {
+
             var foods = await _foodRepository.BrowseAsync(name);
             return _mapper.Map<IEnumerable<FoodDto>>(foods);
         }
